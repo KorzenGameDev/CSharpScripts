@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaceRoomPositioning : MonoBehaviour
+public class RoomPlacePositioning : MonoBehaviour
 {
-    static public PlaceRoomPositioning instance;
+    static public RoomPlacePositioning instance;
 
     LayerMask roomLayerMask;
 
@@ -64,44 +64,22 @@ public class PlaceRoomPositioning : MonoBehaviour
             list.Insert(r, doorway);
         }
     }
+
     public void AddAvailableRoomToList(Room room)
     {
-        //add key place to list
-        if (room.keyPlace.Length > 0)
-        {
-            foreach (Transform keyPosition in room.keyPlace)
+        AddLists(ItemPlace.instance.availablePlaceForItem, room.placeForItem);
+        AddLists(ExtraItemPlace.instance.availablePlaceForExtraItem, room.placeForExtraItem);
+        AddLists(EnemyPlace.instance.availablesPlaceForCommonCreatures, room.placeForCommonCreatures);
+        AddLists(EnemyPlace.instance.availablesPlaceForMiniBossCreatures, room.placeForMiniBossCreatures);
+        AddLists(EnemyPlace.instance.availablesPlaceForBossCreatures, room.placeForMiniBossCreatures);
+    }
+
+    void AddLists(List<Transform> list, List<Transform> add)
+    {
+        if (list.Count > 0)
+            foreach (var item in add)
             {
-                PlaceKey.instance.availablesPlaceForKey.Add(keyPosition);
+                list.Add(item);
             }
-        }
-        //add item place to list
-        if (room.items.Length > 0)
-        {
-            foreach (Transform item in room.items)
-            {
-                PlaceItems.instance.availablePlaceForItem.Add(item);
-            }
-        }
-        if (room.enemyPlace.Length > 0)
-        {
-            foreach (Transform enemyPosition in room.enemyPlace)
-            {
-                EnemyPlace.instance.availablesPlaceForCommonCreatures.Add(enemyPosition);
-            }
-        }
-        if (room.miniBossPlace.Length > 0)
-        {
-            foreach (Transform miniBossPosition in room.miniBossPlace)
-            {
-                EnemyPlace.instance.availablesPlaceForMiniBossCreatures.Add(miniBossPosition);
-            }
-        }
-        if (room.bossPlace.Length > 0)
-        {
-            foreach (Transform bossPosition in room.bossPlace)
-            {
-                EnemyPlace.instance.availablesPlaceForBossCreatures.Add(bossPosition);
-            }
-        }
     }
 }

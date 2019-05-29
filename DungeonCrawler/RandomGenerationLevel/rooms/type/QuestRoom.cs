@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockedRoom : Room
+public class QuestRoom : Room
 {
 }

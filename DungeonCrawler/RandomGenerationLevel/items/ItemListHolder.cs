@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemsListHolder : MonoBehaviour
+public class ItemListHolder : MonoBehaviour
 {
-    public bool permit = true;
+    [Tooltip("List of item which can be spawn on map.")]
     public List<GameObject> itemsList = new List<GameObject>();
 }

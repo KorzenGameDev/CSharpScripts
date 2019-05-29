@@ -6,14 +6,15 @@ public class EnemyPlace : MonoBehaviour
 {
     public static EnemyPlace instance;
 
+    [Tooltip("Place for spawn common creatures.")]
     public List<Transform> availablesPlaceForCommonCreatures = new List<Transform>();
+    [Tooltip("Place for spawn mini boss creatures.")]
     public List<Transform> availablesPlaceForMiniBossCreatures = new List<Transform>();
+    [Tooltip("Place for spawn boss creatures")]
     public List<Transform> availablesPlaceForBossCreatures = new List<Transform>();
 
+    [Tooltip("List placed creatures on map.")]
     public List<GameObject> placedCreatures = new List<GameObject>();
-
-    int commonIteration = 0;
-    int miniBossIteraition = 0;
 
     private void Awake()
     {
@@ -21,20 +22,18 @@ public class EnemyPlace : MonoBehaviour
             instance = this;
     }
 
+    private void Start()
+    {
+        EnemyGeneratorController.instance.LoadCreatures();
+    }
 
     public void StartPlace()
     {
-        //Load creauture
-        EnemyGeneratorController.instance.LoadCreatures();
-
-        //Load iteration
-        LoadIteration();
-        //Debug.Log("Common creatures: " + commonIteration);
-        //Debug.Log("Mini boss creatures: " + miniBossIteraition);
+        EnemyIteration.instance.LoadIteration(availablesPlaceForCommonCreatures.Count, availablesPlaceForMiniBossCreatures.Count);
 
         if (availablesPlaceForCommonCreatures.Count > 0)
         {
-            for (int i = 0; i < commonIteration; i++)
+            for (int i = 0; i < EnemyIteration.instance.commonIteration; i++)
             {
                 GameObject creature = EnemyGeneratorController.instance.commonCreatures[Random.Range(0, EnemyGeneratorController.instance.commonCreatures.Count)];
                 PlaceCreature(ref availablesPlaceForCommonCreatures, creature);
@@ -44,7 +43,7 @@ public class EnemyPlace : MonoBehaviour
 
         if (availablesPlaceForMiniBossCreatures.Count > 0)
         {
-            for (int i = 0; i < miniBossIteraition; i++)
+            for (int i = 0; i < EnemyIteration.instance.miniBossIteraition; i++)
             {
                 GameObject creature = EnemyGeneratorController.instance.miniBossCreatures[Random.Range(0, EnemyGeneratorController.instance.miniBossCreatures.Count)];
                 PlaceCreature(ref availablesPlaceForMiniBossCreatures, creature);
@@ -68,91 +67,33 @@ public class EnemyPlace : MonoBehaviour
             PlaceCreature(ref availablesPlaceForBossCreatures, creature);
         }
         else Debug.Log("You dont have space for boss creatures");
-
-
     }
 
     void PlaceCreature(ref List<Transform> list, GameObject creature)
     {
         Debug.Log("Enemy Placed!");
-
-        //Find room for place enmemy
         Transform placeForCreature = list[Random.Range(0, list.Count)];
 
-        //istantiate chest
         GameObject placedCreature = Instantiate(creature) as GameObject;
 
-        placedCreature.transform.parent = this.transform;
+        placedCreature.transform.parent = EnemyGeneratorController.instance.enemyHolder.transform;
         placedCreature.transform.position = placeForCreature.transform.position;
         placedCreature.transform.rotation = placeForCreature.transform.rotation;
-        //TODO add reference to Enemy
-        //add to list
+        //placedCreature.GetComponent<Enemy>().
+
         list.Remove(placeForCreature);
         placedCreatures.Add(placedCreature);
     }
 
-    void LoadIteration()
+    public void Restart()
     {
-        if(EnemyGeneratorController.instance.procentage)
-        {
-            commonIteration = (int)availablesPlaceForCommonCreatures.Count * EnemyGeneratorController.instance.procentageCommon / 100;
-            miniBossIteraition = (int)availablesPlaceForMiniBossCreatures.Count * EnemyGeneratorController.instance.procentageMiniBoss / 100;
-        }
-        else if(EnemyGeneratorController.instance.numberCommon!=Vector3Int.zero && EnemyGeneratorController.instance.numberMiniBoss!=Vector3Int.zero && EnemyGeneratorController.instance.number)
-        {
-            if (EnemyGeneratorController.instance.numberCommon.x > 0)
-            {
-                commonIteration = EnemyGeneratorController.instance.numberCommon.x;
-            }
-            else if(EnemyGeneratorController.instance.numberCommon.y >= 0 && EnemyGeneratorController.instance.numberCommon.z>=0)
-            {
-                int min = 0;
-                int max = 0;
+        availablesPlaceForCommonCreatures.Clear();
+        availablesPlaceForMiniBossCreatures.Clear();
+        availablesPlaceForBossCreatures.Clear();
 
-                if (EnemyGeneratorController.instance.numberCommon.y <= EnemyGeneratorController.instance.numberCommon.z)
-                {
-                    min = EnemyGeneratorController.instance.numberCommon.y;
-                    max = EnemyGeneratorController.instance.numberCommon.z;
-                }
-                else
-                {
-                    min = EnemyGeneratorController.instance.numberCommon.z;
-                    max = EnemyGeneratorController.instance.numberCommon.y;
-                }
+        foreach (GameObject creature in placedCreatures)
+            Destroy(creature);
 
-                commonIteration = Random.Range(min, max);
-            }
-            else
-            {
-                commonIteration = (int)(availablesPlaceForCommonCreatures.Count * 0.5f);
-            }
-
-            if(EnemyGeneratorController.instance.numberMiniBoss.x>0)
-            {
-                miniBossIteraition = EnemyGeneratorController.instance.numberMiniBoss.x;
-            }
-            else if(EnemyGeneratorController.instance.numberMiniBoss.y>=0 && EnemyGeneratorController.instance.numberMiniBoss.z>=0)
-            {
-                int min = 0;
-                int max = 0;
-
-                if(EnemyGeneratorController.instance.numberMiniBoss.y <= EnemyGeneratorController.instance.numberMiniBoss.z)
-                {
-                    min = EnemyGeneratorController.instance.numberMiniBoss.y;
-                    max = EnemyGeneratorController.instance.numberMiniBoss.z;
-                }
-                else
-                {
-                    min = EnemyGeneratorController.instance.numberMiniBoss.z;
-                    max = EnemyGeneratorController.instance.numberMiniBoss.y;
-                }
-
-                miniBossIteraition = Random.Range(min, max);
-            }
-        }
-        else
-        {
-            Debug.Log("ERROR! in EnemyGeneratorController, i cant Spawn any enemy");
-        }
+        placedCreatures.Clear();
     }
 }

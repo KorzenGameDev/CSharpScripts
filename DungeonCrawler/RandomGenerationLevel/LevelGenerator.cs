@@ -6,10 +6,6 @@ public class LevelGenerator : MonoBehaviour
 {
     static public LevelGenerator instance;
 
-    int sectorIteration = 0;
-    int roomIteration = 0;
-    int lockedIteration = 0;
-
     private void Awake()
     {
         if (instance == null)
@@ -19,56 +15,62 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Setup());
-        LoadIteration();
         RoomGeneratorController.instance.LoadRooms();
+        StartCoroutine(Setup());
     }
 
     IEnumerator Setup()
     {
+        RoomIteration.instance.LoadIteration();
         WaitForSeconds startup = new WaitForSeconds(0.1f);
         WaitForFixedUpdate interval = new WaitForFixedUpdate();
 
         yield return startup;
 
         //place startRoom
-        if (!PlaceRooms.instance.startRoom)
-            PlaceRooms.instance.PlaceStartRoom();
+        if (!RoomPlace.instance.entryRoom)
+            RoomPlace.instance.PlaceEntryRoom();
         yield return interval;
 
-        for (int i = 0; i < sectorIteration; i++)
+        for (int i = 0; i < RoomIteration.instance.sectorIteration; i++)
         {
-            for (int j = 0; j < roomIteration; j++)
+            for (int j = 0; j < RoomIteration.instance.roomIteration; j++)
             {
-                //placed othe room
-                if(RoomGeneratorController.instance.normalRoom.Count>0)
-                    PlaceRooms.instance.PlaceNormalRoom();
+                if(RoomGeneratorController.instance.commonRooms.Count > 0)
+                    RoomPlace.instance.PlaceRoom(RoomGeneratorController.instance.commonRooms,null);
                 yield return interval;
             }
 
-            if (RoomGeneratorController.instance.lockedRoom.Count > 0)
+            if (RoomGeneratorController.instance.lockedRooms.Count > 0)
             {
-                //Iteration
-                for (int j = 0; j < lockedIteration; j++)
+                for (int j = 0; j < RoomIteration.instance.lockedIteration; j++)
                 {
-                    Debug.Log("placed locked room");
-                    PlaceRooms.instance.PlaceLockedRoom();
+                    RoomPlace.instance.PlaceRoom(RoomGeneratorController.instance.lockedRooms,null);
                     yield return interval;
                 }
+            }
+
+            if(RoomGeneratorController.instance.questRooms.Count>0)
+            {
+                Room room = RoomGeneratorController.instance.questRooms[Random.Range(0, RoomGeneratorController.instance.questRooms.Count)];
+                RoomPlace.instance.PlaceRoom(null, room);
+                RoomGeneratorController.instance.questRooms.Remove(room);
             }
 
             yield return interval;
         }
 
+        while(RoomGeneratorController.instance.questRooms.Count > 0)
+        {
+            Room room = RoomGeneratorController.instance.questRooms[Random.Range(0, RoomGeneratorController.instance.questRooms.Count)];
+            RoomPlace.instance.PlaceRoom(null, room);
+            RoomGeneratorController.instance.questRooms.Remove(room);
+        }
 
-        //placed endRoom
-        PlaceRooms.instance.PlaceEndRoom();
+        RoomPlace.instance.PlaceRoom(RoomGeneratorController.instance.exitRooms,null);
         yield return interval;
 
-        //Equipment in chest
-        PlaceItems.instance.StartPlace();
-
-        //placedEnemy
+        ItemPlace.instance.StartPlace();
         EnemyPlace.instance.StartPlace();
 
         //TODO delete this error
@@ -77,94 +79,27 @@ public class LevelGenerator : MonoBehaviour
 
  
    
-    public void ResetSetup()
+    public void Restart()
     {
         Debug.Log("Reset level Generator");
         StopAllCoroutines();
 
-        //destroty room
-        if (PlaceRooms.instance.startRoom)
-        {
-            Destroy(PlaceRooms.instance.startRoom.gameObject);
-        }
-        if (PlaceRooms.instance.endRoom)
-        {
-            Destroy(PlaceRooms.instance.endRoom.gameObject);
-        }
-        foreach (Room room in PlaceRooms.instance.placedRooms)
-        {
-            Destroy(room.gameObject);
-        }
+        //Rooms
+        RoomPlace.instance.Restart();
+        RoomIteration.instance.Restart();
 
-        
-        foreach (GameObject k in PlaceKey.instance.keyInUse)
-        {
-            Destroy(k);
-        }
+        //Enemy
+        EnemyPlace.instance.Restart();
+        EnemyIteration.instance.Restart();
 
-        //clear list
-        PlaceRooms.instance.placedRooms.Clear();
-        PlaceRooms.instance.availableDoorways.Clear();
-
-        PlaceKey.instance.availablesPlaceForKey.Clear();
-        PlaceKey.instance.keyInUse.Clear();
-
-        PlaceItems.instance.ResetItem();
-
-        EnemyPlace.instance.availablesPlaceForBossCreatures.Clear();
-        EnemyPlace.instance.availablesPlaceForCommonCreatures.Clear();
-        EnemyPlace.instance.availablesPlaceForMiniBossCreatures.Clear();
-        EnemyPlace.instance.placedCreatures.Clear();
+        //Items
+        ExtraItemPlace.instance.Restart();
+        ItemPlace.instance.Restart();
 
         ClearConsole();
 
         //reset couroutine
         StartCoroutine(Setup());
-    }
-
-    void LoadIteration()
-    {
-        if(RoomGeneratorController.instance.accurentDemension)
-        {
-            sectorIteration = RoomGeneratorController.instance.sectorsAmount;
-            roomIteration = RoomGeneratorController.instance.normalRoomAmount;
-            lockedIteration = RoomGeneratorController.instance.lockedRoomAmount;
-        }
-
-        else if(RoomGeneratorController.instance.randomDemension)
-        {
-            int min = 0;
-            int max = 0;
-
-            //sectors
-            min = RoomGeneratorController.instance.sectorsRandomRangeAmount.x;
-            max = RoomGeneratorController.instance.sectorsRandomRangeAmount.y;
-
-            if (min >= max && max >=0) min = max;
-
-            sectorIteration = Random.Range(min, max);
-
-            //normal rooms
-            min = RoomGeneratorController.instance.normalRoomRandomRangeAmount.x;
-            max = RoomGeneratorController.instance.normalRoomRandomRangeAmount.y;
-
-            if (min >= max && max >= 0) min = max;
-
-            roomIteration = Random.Range(min, max);
-
-            //locked
-            min = RoomGeneratorController.instance.lockedRoomRangeAmount.x;
-            max = RoomGeneratorController.instance.lockedRoomRangeAmount.y;
-
-            if (min >= max && max >= 0) min = max;
-
-            lockedIteration = Random.Range(min, max);
-        }
-
-        else
-        {
-            Debug.Log("Jestes debilem level generation ma złe iteracje popraw");
-        }
     }
 
     static void ClearConsole()

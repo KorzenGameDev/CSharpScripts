@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemIteration : MonoBehaviour
 {
@@ -12,22 +10,22 @@ public class ItemIteration : MonoBehaviour
             instance = this;
     }
 
-    public void LoadIteration(ref int iteration, int listCount)
+    public void LoadBasicIteration(ref int iteration, int listCount)
     {
-        if (ItemGeneratorController.instance.procentage && !ItemGeneratorController.instance.basicProcentage && !ItemGeneratorController.instance.basicNumber)
+        if (ItemGeneratorController.instance.basicProcentage && !ItemGeneratorController.instance.advanceProcentage && !ItemGeneratorController.instance.advanceNumber)
         {
             iteration = (int)listCount * ItemGeneratorController.instance.procentageAllAmount / 100;
         }
-        else if (ItemGeneratorController.instance.number && !ItemGeneratorController.instance.basicProcentage && !ItemGeneratorController.instance.basicNumber)
+        else if (ItemGeneratorController.instance.basicNumber && !ItemGeneratorController.instance.advanceProcentage && !ItemGeneratorController.instance.advanceNumber)
         {
             iteration = NumberRandomIteration(ItemGeneratorController.instance.numberAllAmount, listCount);
             if (iteration > listCount) iteration = listCount;
         }
     }
 
-    public void LoadBasicIteration(ref int[] iteration, int listCount)
+    public void LoadAdvanceIteration(ref int[] iteration, int listCount)
     {
-        if (ItemGeneratorController.instance.procentage && ItemGeneratorController.instance.basicProcentage)
+        if (ItemGeneratorController.instance.basicProcentage && ItemGeneratorController.instance.advanceProcentage)
         {
             int count = (int)listCount * ItemGeneratorController.instance.procentageAllAmount / 100;
 
@@ -37,7 +35,7 @@ public class ItemIteration : MonoBehaviour
 
             CheckIteration(ref iteration, count);
         }
-        else if (ItemGeneratorController.instance.number && ItemGeneratorController.instance.basicProcentage)
+        else if (ItemGeneratorController.instance.basicNumber && ItemGeneratorController.instance.advanceProcentage)
         {
             int count = NumberRandomIteration(ItemGeneratorController.instance.numberAllAmount,listCount);
 
@@ -48,7 +46,7 @@ public class ItemIteration : MonoBehaviour
             CheckIteration(ref iteration, count);
         }
 
-        else if (ItemGeneratorController.instance.procentage && ItemGeneratorController.instance.basicNumber)
+        else if (ItemGeneratorController.instance.basicProcentage && ItemGeneratorController.instance.advanceNumber)
         {
             int count = ItemGeneratorController.instance.procentageAllAmount;
 
@@ -59,7 +57,7 @@ public class ItemIteration : MonoBehaviour
             CheckIteration(ref iteration, count);
         }
 
-        else if (ItemGeneratorController.instance.number && ItemGeneratorController.instance.basicNumber)
+        else if (ItemGeneratorController.instance.basicNumber && ItemGeneratorController.instance.advanceNumber)
         {
             int count = NumberRandomIteration(ItemGeneratorController.instance.numberAllAmount,listCount);
 
@@ -70,85 +68,6 @@ public class ItemIteration : MonoBehaviour
             CheckIteration(ref iteration, count);
         }
     }
-
-    public void LoadAdvenceIteration(ref int[] basicIteration,ref int[] advanceIteration, int listCount)
-    {
-        if (ItemGeneratorController.instance.advancedProcantage && (ItemGeneratorController.instance.basicProcentage||ItemGeneratorController.instance.basicNumber))
-        { 
-            LoadBasicIteration(ref basicIteration, listCount);
-
-            int count = basicIteration[0];
-
-            advanceIteration[0] = count * ItemGeneratorController.instance.procentageSwords / 100;
-            advanceIteration[1] = count * ItemGeneratorController.instance.procentageAxes / 100;
-            advanceIteration[2] = count * ItemGeneratorController.instance.procentageShields / 100;
-            advanceIteration[3] = count * ItemGeneratorController.instance.procentageBowls / 100;
-
-            count = basicIteration[1];
-            advanceIteration[4] = count * ItemGeneratorController.instance.procentageLivePotions / 100;
-            advanceIteration[5] = count * ItemGeneratorController.instance.procentageManaPotions / 100;
-
-            count = basicIteration[2];
-            advanceIteration[6] = count * ItemGeneratorController.instance.procentageOres / 100;
-
-            CheckIteration(ref advanceIteration, count);
-        }
-        else if(ItemGeneratorController.instance.advanceNumber && (ItemGeneratorController.instance.basicProcentage || ItemGeneratorController.instance.basicNumber))
-        {
-            LoadBasicIteration(ref basicIteration, listCount);
-
-            int count = basicIteration[0];
-
-            advanceIteration[0] = NumberRandomIteration(ItemGeneratorController.instance.numberSwords, count);
-            advanceIteration[1] = NumberRandomIteration(ItemGeneratorController.instance.numberAxes, count);
-            advanceIteration[2] = NumberRandomIteration(ItemGeneratorController.instance.numberShields,count);
-            advanceIteration[3] = NumberRandomIteration(ItemGeneratorController.instance.numberBowls,count);
-
-            count = basicIteration[1];
-            advanceIteration[4] = NumberRandomIteration(ItemGeneratorController.instance.numberLivePotions,count);
-            advanceIteration[5] = NumberRandomIteration(ItemGeneratorController.instance.numberManaPotions,count);
-
-            count = basicIteration[2];
-            advanceIteration[6] = NumberRandomIteration(ItemGeneratorController.instance.numberOres,count);
-
-            CheckIteration(ref advanceIteration, count);
-        }
-        else if (!(ItemGeneratorController.instance.basicProcentage || ItemGeneratorController.instance.basicNumber) && ItemGeneratorController.instance.advancedProcantage)
-        {
-            int count = 0;
-            LoadIteration(ref count, listCount);
-
-            advanceIteration[0] = count * ItemGeneratorController.instance.procentageSwords / 100;
-            advanceIteration[1] = count * ItemGeneratorController.instance.procentageAxes / 100;
-            advanceIteration[2] = count * ItemGeneratorController.instance.procentageShields / 100;
-            advanceIteration[3] = count * ItemGeneratorController.instance.procentageBowls / 100;
-
-            advanceIteration[4] = count * ItemGeneratorController.instance.procentageLivePotions / 100;
-            advanceIteration[5] = count * ItemGeneratorController.instance.procentageManaPotions / 100;
-
-            advanceIteration[6] = count * ItemGeneratorController.instance.procentageOres / 100;
-
-            CheckIteration(ref advanceIteration, count);
-        }
-        else if (!(ItemGeneratorController.instance.basicProcentage || ItemGeneratorController.instance.basicNumber) && ItemGeneratorController.instance.advanceNumber)
-        {
-            int count = 0;
-            LoadIteration(ref count, listCount);
-
-            advanceIteration[0] = NumberRandomIteration(ItemGeneratorController.instance.numberSwords, count);
-            advanceIteration[1] = NumberRandomIteration(ItemGeneratorController.instance.numberAxes, count);
-            advanceIteration[2] = NumberRandomIteration(ItemGeneratorController.instance.numberShields, count);
-            advanceIteration[3] = NumberRandomIteration(ItemGeneratorController.instance.numberBowls, count);
-
-            advanceIteration[4] = NumberRandomIteration(ItemGeneratorController.instance.numberLivePotions, count);
-            advanceIteration[5] = NumberRandomIteration(ItemGeneratorController.instance.numberManaPotions, count);
-
-            advanceIteration[6] = NumberRandomIteration(ItemGeneratorController.instance.numberOres, count);
-
-            CheckIteration(ref advanceIteration, count);
-        }
-    }
-
 
     int NumberRandomIteration(Vector3Int rand, int count)
     {
