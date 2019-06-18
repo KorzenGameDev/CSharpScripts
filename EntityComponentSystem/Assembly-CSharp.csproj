@@ -67,95 +67,96 @@
     <Compile Include="Assets\ECS_01\MoveSystem.cs" />
     <Compile Include="Assets\ECS_01\SpeedComponent.cs" />
     <Compile Include="Assets\ECS_01\TestECS.cs" />
+    <Compile Include="Assets\ECS_02\TestECS_02.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.Properties">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.Properties.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.Properties.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Jobs">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Jobs.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Jobs.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Jobs.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Jobs.Editor.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Jobs.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.Editor.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.StaticTypeRegistry">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.StaticTypeRegistry.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.StaticTypeRegistry.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Scenes.Hybrid">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Scenes.Hybrid.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Scenes.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Scenes.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Scenes.Editor.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Scenes.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Extensions">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Mathematics.Extensions.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Mathematics.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Extensions.Hybrid">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Entities.BuildUtils">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.BuildUtils.dll</HintPath>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Entities.Hybrid">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Properties">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Properties.Reflection">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Properties.Reflection.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Transforms">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Transforms.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Transforms.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Transforms.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Transforms.Hybrid">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
+    <Reference Include="Unity.Timeline">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rendering.Hybrid">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/ScriptAssemblies/Unity.Rendering.Hybrid.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Rendering.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Entities.BuildUtils">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.BuildUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Entities.Hybrid">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Properties">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Entities">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Properties.Reflection">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Properties.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Transforms">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Transforms.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Transforms.Editor">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Transforms.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Transforms.Hybrid">
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Silnik/2019.1.0f2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -344,16 +345,16 @@
       <HintPath>D:/Silnik/2019.1.0f2/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>G:/RepositoryPrograming/EntityComponentSystem/Library/PackageCache/com.unity.collections@0.0.9-preview.20/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>G:/RepositoryPrograming/CSharpScripts/EntityComponentSystem/Library/PackageCache/com.unity.collections@0.0.9-preview.20/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Silnik/2019.1.0f2/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
